@@ -1,0 +1,54 @@
+{
+  "site": "twitter.com",
+  "name": "Twitter/X Driver",
+  "version": "1.0",
+  "routes": {
+    "home": "https://twitter.com/home",
+    "explore": "https://twitter.com/explore",
+    "notifications": "https://twitter.com/notifications",
+    "messages": "https://twitter.com/messages",
+    "profile": "https://twitter.com/{username}"
+  },
+  "capabilities": {
+    "post_tweet": {
+      "description": "Post a new tweet",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "like_tweet": {
+      "description": "Like the current tweet",
+      "params": [],
+      "returns": "status"
+    },
+    "retweet": {
+      "description": "Retweet the current tweet",
+      "params": [],
+      "returns": "status"
+    },
+    "reply": {
+      "description": "Reply to the current tweet",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "follow_user": {
+      "description": "Follow a user on their profile",
+      "params": [],
+      "returns": "status"
+    },
+    "search": {
+      "description": "Search for tweets",
+      "params": ["query"],
+      "returns": "page"
+    },
+    "get_tweet_text": {
+      "description": "Get the text of the current tweet",
+      "params": [],
+      "returns": "string"
+    }
+  },
+  "contexts": {
+    "home_page": ["post_tweet", "search"],
+    "tweet_page": ["like_tweet", "retweet", "reply", "get_tweet_text"],
+    "profile_page": ["follow_user", "post_tweet"]
+  }
+}

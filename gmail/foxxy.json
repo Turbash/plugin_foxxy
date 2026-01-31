@@ -1,0 +1,79 @@
+{
+  "site": "gmail.com",
+  "name": "Gmail Email Driver",
+  "version": "1.0",
+  "routes": {
+    "inbox": "https://mail.google.com/mail/u/0/#inbox",
+    "sent": "https://mail.google.com/mail/u/0/#sent",
+    "drafts": "https://mail.google.com/mail/u/0/#drafts",
+    "starred": "https://mail.google.com/mail/u/0/#starred",
+    "compose": "https://mail.google.com/mail/u/0/#compose"
+  },
+  "capabilities": {
+    "open_compose": {
+      "description": "Open compose email popup",
+      "params": [],
+      "returns": "status"
+    },
+    "fill_compose": {
+      "description": "Fill compose email fields (to, subject, body)",
+      "params": ["to?", "subject?", "body?"],
+      "returns": "status"
+    },
+    "compose_email": {
+      "description": "Compose a new email",
+      "params": ["to", "subject", "body"],
+      "returns": "status"
+    },
+    "reply": {
+      "description": "Reply to the current email",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "forward": {
+      "description": "Forward the current email",
+      "params": ["to"],
+      "returns": "status"
+    },
+    "delete_email": {
+      "description": "Delete the current email",
+      "params": [],
+      "returns": "status"
+    },
+    "archive_email": {
+      "description": "Archive the current email",
+      "params": [],
+      "returns": "status"
+    },
+    "star_email": {
+      "description": "Star the current email",
+      "params": [],
+      "returns": "status"
+    },
+    "search": {
+      "description": "Search emails",
+      "params": ["query"],
+      "returns": "page"
+    },
+    "open_email": {
+      "description": "Open the nth email from the currently visible list (1-based index)",
+      "params": ["n"],
+      "returns": "status"
+    },
+    "get_subject": {
+      "description": "Get email subject",
+      "params": [],
+      "returns": "string"
+    },
+    "get_sender": {
+      "description": "Get email sender",
+      "params": [],
+      "returns": "string"
+    }
+  },
+  "contexts": {
+    "inbox_page": ["open_compose", "compose_email", "search", "open_email"],
+    "email_page": ["reply", "forward", "delete_email", "archive_email", "star_email", "get_subject", "get_sender"],
+    "compose_page": ["fill_compose"]
+  }
+}

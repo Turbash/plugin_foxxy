@@ -1,0 +1,84 @@
+{
+  "site": "docs.google.com",
+  "name": "Google Docs",
+  "version": "1.0",
+  "capabilities": {
+    "create_document": {
+      "description": "Create a new Google Docs document",
+      "params": [],
+      "returns": "status"
+    },
+    "type_text": {
+      "description": "Type text into the current document",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "add_heading": {
+      "description": "Add a heading to the document",
+      "params": ["text", {
+        "name": "level?",
+        "type": "enum",
+        "values": ["Heading 1", "Heading 2", "Heading 3"]
+      }],
+      "returns": "status"
+    },
+    "bold": {
+      "description": "Make selected text bold",
+      "params": [],
+      "returns": "status"
+    },
+    "italic": {
+      "description": "Make selected text italic",
+      "params": [],
+      "returns": "status"
+    },
+    "underline": {
+      "description": "Underline selected text",
+      "params": [],
+      "returns": "status"
+    },
+    "create_list": {
+      "description": "Create a bulleted or numbered list",
+      "params": [{
+        "name": "type?",
+        "type": "enum",
+        "values": ["bulleted", "numbered"]
+      }],
+      "returns": "status"
+    },
+    "insert_link": {
+      "description": "Insert a hyperlink",
+      "params": ["url", "text?"],
+      "returns": "status"
+    },
+    "find_replace": {
+      "description": "Find and replace text in the document",
+      "params": ["find", "replace"],
+      "returns": "status"
+    },
+    "set_font_size": {
+      "description": "Change font size of selected text",
+      "params": ["size"],
+      "returns": "status"
+    },
+    "insert_table": {
+      "description": "Insert a table into the document",
+      "params": ["rows", "cols"],
+      "returns": "status"
+    },
+    "add_comment": {
+      "description": "Add a comment to the selected text",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "set_page_color": {
+      "description": "Change document background color",
+      "params": [{
+        "name": "color",
+        "type": "enum",
+        "values": ["white", "light_gray", "light_blue", "light_green", "light_yellow"]
+      }],
+      "returns": "status"
+    }
+  }
+}

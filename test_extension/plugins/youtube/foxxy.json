@@ -1,0 +1,53 @@
+{
+  "site": "youtube.com",
+  "name": "YouTube Video Driver",
+  "version": "1.0",
+  "routes": {
+    "home": "https://www.youtube.com",
+    "search": "https://www.youtube.com/results?search_query={query}",
+    "subscriptions": "https://www.youtube.com/feed/subscriptions",
+    "history": "https://www.youtube.com/feed/history"
+  },
+  "capabilities": {
+    "search": {
+      "description": "Search for videos",
+      "params": ["query"],
+      "returns": "page"
+    },
+    "play_video": {
+      "description": "Play the nth video on search results (1-based index)",
+      "params": ["n"],
+      "returns": "status"
+    },
+    "pause_video": {
+      "description": "Pause the current video",
+      "params": [],
+      "returns": "status"
+    },
+    "like_video": {
+      "description": "Like the current video",
+      "params": [],
+      "returns": "status"
+    },
+    "subscribe": {
+      "description": "Subscribe to the current channel",
+      "params": [],
+      "returns": "status"
+    },
+    "get_title": {
+      "description": "Get video title",
+      "params": [],
+      "returns": "string"
+    },
+    "get_views": {
+      "description": "Get video view count",
+      "params": [],
+      "returns": "string"
+    }
+  },
+  "contexts": {
+    "video_page": ["play_video", "pause_video", "like_video", "subscribe", "get_title", "get_views"],
+    "search_page": ["search"],
+    "home_page": ["search"]
+  }
+}

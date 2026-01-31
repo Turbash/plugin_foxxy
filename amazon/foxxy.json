@@ -1,0 +1,61 @@
+{
+  "site": "amazon.*",
+  "name": "Amazon Shopping Driver",
+  "version": "1.2",
+  "routes": {
+    "home": "/",
+    "search": "/s?k={query}",
+    "cart": "/gp/cart"
+  },
+  "capabilities": {
+    "search": {
+      "description": "Search for products",
+      "params": ["query"],
+      "returns": "page"
+    },
+    "open_listing": {
+      "description": "Open the nth product listing from search results (1-based index)",
+      "params": ["n"],
+      "returns": "page"
+    },
+    "sort": {
+      "description": "Change sort order on search results",
+      "params": [{
+        "name": "method",
+        "type": "enum",
+        "values": ["featured", "price_low_to_high", "price_high_to_low", "avg_customer_review", "newest"]
+      }],
+      "returns": "status"
+    },
+    "add_to_cart": {
+      "description": "Add product to cart. On search page, use n to specify which product (1-based index). On product page, adds current product.",
+      "params": ["n?"],
+      "returns": "status"
+    },
+    "buy_now": {
+      "description": "Buy the current product immediately",
+      "params": [],
+      "returns": "status"
+    },
+    "go_to_checkout": {
+      "description": "Navigate to checkout page from anywhere",
+      "params": [],
+      "returns": "page"
+    },
+    "click_proceed_checkout": {
+      "description": "Click the 'Proceed to checkout' button on cart page",
+      "params": [],
+      "returns": "status"
+    },
+    "get_price": {
+      "description": "Get product price",
+      "params": [],
+      "returns": "string"
+    }
+  },
+  "contexts": {
+    "product_page": ["add_to_cart", "buy_now", "get_price"],
+    "cart_page": ["click_proceed_checkout", "go_to_checkout"],
+    "search_page": ["search", "open_listing", "sort", "add_to_cart"]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "site": "linkedin.com",
+  "name": "LinkedIn Professional Driver",
+  "version": "1.0",
+  "routes": {
+    "home": "https://www.linkedin.com/feed",
+    "mynetwork": "https://www.linkedin.com/mynetwork",
+    "jobs": "https://www.linkedin.com/jobs",
+    "messaging": "https://www.linkedin.com/messaging",
+    "profile": "https://www.linkedin.com/in/{username}"
+  },
+  "capabilities": {
+    "create_post": {
+      "description": "Create a new LinkedIn post",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "like_post": {
+      "description": "Like a post",
+      "params": [],
+      "returns": "status"
+    },
+    "comment": {
+      "description": "Comment on a post",
+      "params": ["text"],
+      "returns": "status"
+    },
+    "connect": {
+      "description": "Send connection request on profile",
+      "params": [],
+      "returns": "status"
+    },
+    "search_jobs": {
+      "description": "Search for jobs",
+      "params": ["query"],
+      "returns": "page"
+    },
+    "apply_job": {
+      "description": "Apply to the current job posting",
+      "params": [],
+      "returns": "status"
+    },
+    "search_people": {
+      "description": "Search for people",
+      "params": ["query"],
+      "returns": "page"
+    }
+  },
+  "contexts": {
+    "feed_page": ["create_post", "like_post", "comment"],
+    "profile_page": ["connect"],
+    "job_page": ["apply_job"],
+    "jobs_page": ["search_jobs"]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "name": "Google Docs",
+  "description": "Automate Google Docs operations",
+  "capabilities": [
+    {
+      "name": "create_document",
+      "description": "Create a new Google Docs document",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Title for the new document"
+        }
+      ]
+    },
+    {
+      "name": "type_text",
+      "description": "Type text into the current document",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Text to type"
+        }
+      ]
+    },
+    {
+      "name": "add_heading",
+      "description": "Add a heading to the document",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Heading text"
+        },
+        {
+          "name": "level?",
+          "type": "enum",
+          "enum_values": ["Heading 1", "Heading 2", "Heading 3"],
+          "description": "Heading level (default: Heading 1)"
+        }
+      ]
+    },
+    {
+      "name": "bold",
+      "description": "Make selected text bold",
+      "parameters": []
+    },
+    {
+      "name": "italic",
+      "description": "Make selected text italic",
+      "parameters": []
+    },
+    {
+      "name": "underline",
+      "description": "Underline selected text",
+      "parameters": []
+    },
+    {
+      "name": "create_list",
+      "description": "Convert selected text to a bulleted list",
+      "parameters": [
+        {
+          "name": "type?",
+          "type": "enum",
+          "enum_values": ["bulleted", "numbered"],
+          "description": "List type (default: bulleted)"
+        }
+      ]
+    },
+    {
+      "name": "insert_link",
+      "description": "Insert a hyperlink",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "URL to link to"
+        },
+        {
+          "name": "text?",
+          "type": "string",
+          "description": "Link text (uses selected text if not provided)"
+        }
+      ]
+    },
+    {
+      "name": "find_replace",
+      "description": "Find and replace text in the document",
+      "parameters": [
+        {
+          "name": "find",
+          "type": "string",
+          "description": "Text to find"
+        },
+        {
+          "name": "replace",
+          "type": "string",
+          "description": "Text to replace with"
+        }
+      ]
+    },
+    {
+      "name": "set_font_size",
+      "description": "Change font size of selected text",
+      "parameters": [
+        {
+          "name": "size",
+          "type": "string",
+          "description": "Font size (e.g., '12', '14', '16', '18')"
+        }
+      ]
+    },
+    {
+      "name": "insert_table",
+      "description": "Insert a table into the document",
+      "parameters": [
+        {
+          "name": "rows",
+          "type": "string",
+          "description": "Number of rows"
+        },
+        {
+          "name": "cols",
+          "type": "string",
+          "description": "Number of columns"
+        }
+      ]
+    },
+    {
+      "name": "add_comment",
+      "description": "Add a comment to the selected text",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "Comment text"
+        }
+      ]
+    },
+    {
+      "name": "set_page_color",
+      "description": "Change document background color",
+      "parameters": [
+        {
+          "name": "color",
+          "type": "enum",
+          "enum_values": ["white", "light_gray", "light_blue", "light_green", "light_yellow"],
+          "description": "Background color"
+        }
+      ]
+    }
+  ]
+}

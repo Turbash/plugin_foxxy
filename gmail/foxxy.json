@@ -15,24 +15,44 @@
       "params": [],
       "returns": "status"
     },
-    "fill_compose": {
-      "description": "Fill compose email fields (to, subject, body)",
-      "params": ["to?", "subject?", "body?"],
+    "write_receiver": {
+      "description": "Write recipient email address in To field",
+      "params": [
+        "to"
+      ],
       "returns": "status"
     },
-    "compose_email": {
-      "description": "Compose a new email",
-      "params": ["to", "subject", "body"],
+    "write_subject": {
+      "description": "Write subject line of email",
+      "params": [
+        "subject"
+      ],
+      "returns": "status"
+    },
+    "write_body": {
+      "description": "Write body content of email",
+      "params": [
+        "body"
+      ],
+      "returns": "status"
+    },
+    "send_email": {
+      "description": "Click send button to send email",
+      "params": [],
       "returns": "status"
     },
     "reply": {
       "description": "Reply to the current email",
-      "params": ["text"],
+      "params": [
+        "text"
+      ],
       "returns": "status"
     },
     "forward": {
       "description": "Forward the current email",
-      "params": ["to"],
+      "params": [
+        "to"
+      ],
       "returns": "status"
     },
     "delete_email": {
@@ -52,12 +72,16 @@
     },
     "search": {
       "description": "Search emails",
-      "params": ["query"],
+      "params": [
+        "query"
+      ],
       "returns": "page"
     },
     "open_email": {
       "description": "Open the nth email from the currently visible list (1-based index)",
-      "params": ["n"],
+      "params": [
+        "n"
+      ],
       "returns": "status"
     },
     "get_subject": {
@@ -72,8 +96,25 @@
     }
   },
   "contexts": {
-    "inbox_page": ["open_compose", "compose_email", "search", "open_email"],
-    "email_page": ["reply", "forward", "delete_email", "archive_email", "star_email", "get_subject", "get_sender"],
-    "compose_page": ["fill_compose"]
+    "inbox_page": [
+      "open_compose",
+      "search",
+      "open_email"
+    ],
+    "email_page": [
+      "reply",
+      "forward",
+      "delete_email",
+      "archive_email",
+      "star_email",
+      "get_subject",
+      "get_sender"
+    ],
+    "compose_page": [
+      "write_receiver",
+      "write_subject",
+      "write_body",
+      "send_email"
+    ]
   }
 }

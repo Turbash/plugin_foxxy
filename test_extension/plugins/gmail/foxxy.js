@@ -36,63 +36,90 @@ window.__foxxy_open_compose = async function open_compose() {
   return 'not_found';
 }
 
-window.__foxxy_fill_compose = async function fill_compose({ to, subject, body } = {}) {
-  console.log('📝 fill_compose called with:', { to, subject, body });
+window.__foxxy_write_receiver = async function write_receiver({ to }) {
+  console.log('📧 write_receiver called with:', { to });
   
-  if (to) {
-    const toField = findElement([
-      "input[aria-label='To']",
-      "textarea[name='to']",
-      "div.wO.nr.l1 textarea",
-      "input[peoplekit-id='BbVjBd']",
-      "input.agP.aFw"
-    ]);
-    if (toField) {
-      toField.focus();
-      toField.value = to;
-      toField.dispatchEvent(new Event('input', { bubbles: true }));
-      console.log('✅ Filled To field');
-    }
+  const toField = findElement([
+    "input[aria-label='To']",
+    "textarea[name='to']",
+    "div.wO.nr.l1 textarea",
+    "input[peoplekit-id='BbVjBd']",
+    "input.agP.aFw"
+  ]);
+  
+  if (toField) {
+    toField.focus();
+    toField.value = to;
+    toField.dispatchEvent(new Event('input', { bubbles: true }));
+    console.log('✅ Filled To field');
+    return 'success';
   }
   
-  if (subject) {
-    const subjectField = findElement([
-      "input[name='subjectbox']",
-      "input[aria-label='Subject']",
-      "input.aoT"
-    ]);
-    if (subjectField) {
-      subjectField.focus();
-      subjectField.value = subject;
-      subjectField.dispatchEvent(new Event('input', { bubbles: true }));
-      console.log('✅ Filled Subject field');
-    }
-  }
-  
-  if (body) {
-    const bodyField = findElement([
-      "div[aria-label='Message Body'][role='textbox']",
-      "div.Am.aiL.Al.editable.LW-avf[contenteditable='true']",
-      "div[g_editable='true'][role='textbox']",
-      "div.editable[contenteditable='true']"
-    ]);
-    if (bodyField) {
-      bodyField.focus();
-      bodyField.textContent = body;
-      bodyField.dispatchEvent(new Event('input', { bubbles: true }));
-      console.log('✅ Filled Body field');
-    }
-  }
-  
-  return 'success';
+  console.log('❌ To field not found');
+  return 'not_found';
 }
 
-window.__foxxy_compose_email = async function compose_email({ to, subject, body }) {
-  // Legacy function - opens compose and fills everything automatically
-  await open_compose();
-  await wait(300);
-  await fill_compose({ to, subject, body });
-  return 'success';
+window.__foxxy_write_subject = async function write_subject({ subject }) {
+  console.log('📋 write_subject called with:', { subject });
+  
+  const subjectField = findElement([
+    "input[name='subjectbox']",
+    "input[aria-label='Subject']",
+    "input.aoT"
+  ]);
+  
+  if (subjectField) {
+    subjectField.focus();
+    subjectField.value = subject;
+    subjectField.dispatchEvent(new Event('input', { bubbles: true }));
+    console.log('✅ Filled Subject field');
+    return 'success';
+  }
+  
+  console.log('❌ Subject field not found');
+  return 'not_found';
+}
+
+window.__foxxy_write_body = async function write_body({ body }) {
+  console.log('✍️ write_body called with:', { body });
+  
+  const bodyField = findElement([
+    "div[aria-label='Message Body'][role='textbox']",
+    "div.Am.aiL.Al.editable.LW-avf[contenteditable='true']",
+    "div[g_editable='true'][role='textbox']",
+    "div.editable[contenteditable='true']"
+  ]);
+  
+  if (bodyField) {
+    bodyField.focus();
+    bodyField.textContent = body;
+    bodyField.dispatchEvent(new Event('input', { bubbles: true }));
+    console.log('✅ Filled Body field');
+    return 'success';
+  }
+  
+  console.log('❌ Body field not found');
+  return 'not_found';
+}
+
+window.__foxxy_send_email = async function send_email() {
+  console.log('🚀 send_email called');
+  
+  const sendBtn = findElement([
+    "div[role='button'][data-tooltip^='Send']",
+    "div.T-I.J-J5-Ji.aoO.v7.T-I-atl.L3",
+    "div[aria-label^='Send']",
+    "button[aria-label^='Send']"
+  ]);
+  
+  if (sendBtn) {
+    sendBtn.click();
+    console.log('✅ Send button clicked');
+    return 'success';
+  }
+  
+  console.log('❌ Send button not found');
+  return 'not_found';
 }
 
 window.__foxxy_reply = async function reply({ text }) {
